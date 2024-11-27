@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Workshop 3</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function showAlert() {
+            var currentDate = new Date();
+            alert("You clicked me! " + currentDate);
+        }
+        
+        function showTable() {
+            document.write(
+                '<table border="1">' +
+                '<thead>' +
+                '<tr>' +
+                '<th>Name</th>' +
+                '<th>Position</th>' +
+                '<th>Salary</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                '<tr><td>Tiger Nixon</td><td>System Architect</td><td>$320,800</td></tr>' +
+                '<tr><td>Garrett Winters</td><td>Accountant</td><td>$170,750</td></tr>' +
+                '<tr><td>Ashton Cox</td><td>Junior Technical Author</td><td>$86,000</td></tr>' +
+                '<tr><td>Cedric Kelly</td><td>Senior Javascript Developer</td><td>$433,060</td></tr>' +
+                '<tr><td>Airi Satou</td><td>Accountant</td><td>$162,700</td></tr>' +
+                '</tbody>' +
+                '</table>'
+            );
+        }
+
+        function showGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var coords = "Latitude: " + position.coords.latitude + 
+                                 ", Longitude: " + position.coords.longitude;
+                    console.log(coords);
+                    document.write('<p>' + coords + '</p>');
+                }, function(error) {
+                    console.error("Geolocation error: ", error);
+                });
+            } 
+        }
+
+        function onMouseOverHeading() {
+            console.log("Stepped over by a mouse!");
+        }
+
+        function onMouseOutHeading() {
+            alert("Bye bye mouse!");
+        }
+
+        function onTextareaFocus() {
+            document.getElementById("textdata").style.backgroundColor = "#f0f8ff";
+            alert("Please fill in the form with proper data.");
+        }
+
+
+        function onTextareaKeydown() {
+            var textData = document.getElementById("textdata").value.length;
+            document.getElementById("charcount").innerText = "Character count: " + (textData + 1);
+        }
+
+        function onSubmitForm(event) {
+            event.preventDefault();
+            var textValue = document.getElementById("textdata").value;
+            if (textValue === "") {
+                alert("Textarea is empty. Please enter some text.");
+            } else {
+                alert("Form submitted successfully!");
+            }
+        }
+
+        function showMouseCoordinates(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            document.getElementById("coordinates").innerHTML = "X: " + x + ", Y: " + y;
+            console.log("X: " + x + ", Y: " + y);
+        }
+    </script>
+</head>
+<body class="ws3">
+    <h1>Workshop 3: JavaScript Events</h1>
+    <hr />
+    <p>In this exercise we will practice the use of JavaScript events. Use the lecture-material as a reference guide side by side with these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use.</p>
+    <hr/>
+    <h2>Exercise 1</h2>
+    <p>Below you will see three buttons. Edit the source code and add onClick-events to these buttons.</p>
+    <p>
+        <button onclick="showAlert()">Click me</button>
+        <button onclick="showTable()">Show table</button>
+        <button onclick="showGeolocation()">Geolocation</button>
+    </p>
+
+    <ol>
+        <li>The first button should open an alert-button, which will say "You clicked me!" </li>
+        <li>When you see the button working, add the current date after the text by using the Date() -function.</li>
+        <li>The second button should call a function called showTable(). ShowTable function should output a simple HTML table (below) to the page. Use document.write to print data. Feel free to modify the data on the table.</li>
+    </ol>
+    <table id="example" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>$162,700</td>
+            </tr>              
+        </tbody>
+    </table>
+    <ol start="4">
+        <li>The last button should check Geolocation of the user, and output it to the console and to the page. Note: Some browsers might not allow you to do this. Try different browsers if you get errors.</li>
+    </ol>
+    <hr/>
+    <h2 id="exercise2" onmouseover="onMouseOverHeading()" onmouseout="onMouseOutHeading()">Exercise 2</h2>
+    <ul>
+        <li>Add an onMouseOver event on the Heading "Exercise 2" of this page. It should fire when the user's mouse is moved over it. Output "Stepped over by a mouse!" on the console.</li>
+        <li>Add another event, which will fire when the mouse leaves the Exercise 2 heading. This time show an alert window to the user saying: "Bye bye mouse!"</li>
+    </ul>
+    <hr/>
+    <h2>Exercise 3</h2>
+    <p>Below you will see a simple form.</p>
+    <ul>
+        <li>Add an `onfocus` event to the textarea below. When the user enters the textarea, it should show a text saying: "Please fill in the form with proper data.". You can try modifying the background color of the box as well.</li>
+        <li>Try to use `onkeydown` event on the textarea. It should calculate the number of key presses and output them on the screen. Could you think of other smart ways to use it?</li>
+        <li>When the form button is clicked, check if the textarea is empty. Notify the user with an appropriate message.</li>
+    </ul>
+    <form onsubmit="onSubmitForm(event)">
+        <textarea id="textdata" onfocus="onTextareaFocus()" onkeydown="onTextareaKeydown()"></textarea><br>
+        <span id="charcount"></span><br>
+        <button type="submit">Send me</button>
+    </form>
+    <hr/>
+    <h2>Exercise 4</h2>
+    <div id="coordinates" style="border: 1px solid black; height: 100px; width: 200px;" onmousemove="showMouseCoordinates(event)"></div>
+    <p>Add an `onMouseMove` event to the DIV-element above. When you move the mouse over the DIV (rectangle), the program should output the coordinates of your pointer. First, output to the console using `console.log`. When the program is working, try outputting the text in the H2 element with an id "coords".</p> 
+    <hr/>
+</body>
+</html>

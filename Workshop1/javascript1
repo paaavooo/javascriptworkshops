@@ -1,0 +1,7 @@
+Kokeilin erilaisia komentoja workshop example sivulla, kuten
+-alert() ja sen erilaiset käyttötavat
+-document.write()
+-console.log
+-erilaisten muuttujien asettamista var komennolla
+-ehtolauseita
+-looppeja

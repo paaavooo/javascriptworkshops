@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Workshop 5</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="5koodi.js"></script>
+</head>
+
+<body>
+    <h1>Workshop 5: Smart Forms</h1>
+    <hr />
+    <p>In this exercise we will practice the art of Smart Forms handling. Use the lecture-material as a reference guide
+        side by side these exercises. It might also be a good idea to save the lines of code you write during the
+        exercises for later use. </p>
+
+    <hr />
+
+    <h2>Exercise 1: Contact Form</h2>
+    <p data-line="4">Below you see a simple contact form which has fields for email address and comments.</p>
+    <p data-line="6">a) Write JavaScript code which checks the input fields when the form submit-button is clicked.
+        Display the entered values with alert dialogs. Use onsubmit-event on the form tag. Make sure that your code
+        cancels the submission of the form if needed. Hint: See the PowerPoint slides.</p>
+    <p data-line="8">b) Enhance the code and write if-statements to check the following: the length of email address
+        should be at least 6 and less than 15. It should also have a @ character. Check also that the comment field
+        is not empty and the content should be trimmed down to 50 characters. Utilize JavaScript <a
+            href="http://www.w3schools.com/js/js_string_methods.asp" target="_blank">String-methods</a>.</p>
+    <p data-line="12">c) Should an error occur, highlight the erroneous field and provide some feedback to the user.
+        Preferably by displaying some text message on the page, next to the input field. See the lecture slides for
+        demo.</p>
+        <form onsubmit="return validateForm()">
+            <div class="no-border">
+                <label>Email address:<br>
+                    <input type="text" name="email" id="email">
+                    <span id="emailError" style="color:rgb(168, 44, 44);"></span>
+                </label>
+            </div>
+            <div class="no-border">
+                <label>
+                    Comment:<br>
+                    <textarea name="comment" id="comment"></textarea>
+                    <span id="commentError" style="color:rgb(168, 44, 44);"></span>
+                </label>
+            </div>
+    
+            <div class="no-border">
+                <label for="contact-method">Preferred Contact Method:<br>
+                    <select name="contact-method" id="contact-method" onchange="toggleDetails()">
+                        <option value="">Select a method</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                        <option value="sms">SMS</option>
+                    </select>
+                </label>
+            </div>
+    
+            <div id="contact-details" style="display:none;" class="no-border">
+                <label for="contact-info">Details:<br>
+                    <input type="text" name="contact-info" id="contact-info">
+                </label>
+            </div>
+    
+            <br>
+            <input type="submit" value="Send">
+        </form>
+
+    <hr />
+
+    <h2>Exercise 2: Membership Calculator</h2>
+
+    <p data-line="16">Below there is a membership calculator form. It has 3 fields: Membership Type (dropdown), Years
+        (input), and Costs (input). The user can select a membership plan and enter the number of years for which they
+        wish to pay.</p>
+    <p data-line="20">Update the code of the form so that:</p>
+    <p data-line="20">a) the Costs field should display the total cost of the subscription</p>
+    <p data-line="22">b) If the user chooses to pay for more than 2 years, they will receive a 20% discount. Notify the
+        user when they are eligible for the discount by showing a message next to the form.</p>
+    <p data-line="24">c) If the user pays for 5 years or more, they will receive the 20% discount plus an extra 5€
+        discount with a special greeting message.</p>
+    <form method="post" id="theForm">
+        <fieldset>
+            <legend>Create Your Membership</legend>
+            <p>Complete this form to calculate your membership. There's a 20% discount if you enroll for more than one
+                year!</p>
+            <div>
+                <label for="type">Type</label>
+                <select name="type" id="type" size="4" required>
+                    <option value="basic">Basic - $10.00</option>
+                    <option value="premium">Premium - $15.00</option>
+                    <option value="gold">Gold - $20.00</option>
+                    <option value="platinum">Platinum - $25.00</option>
+                </select>
+            </div>
+            <div>
+                <label for="years">Years</label>
+                <input type="number" name="years" id="years" min="1" required>
+            </div>
+            <div>
+                <label for="cost">Cost</label>
+                <input type="text" name="cost" id="cost" disabled>
+            </div>
+            <input type="button" value="Calculate" id="submit" onclick="calculateMembership()">
+
+        </fieldset>
+    </form>
+
+    <p data-line="20">&nbsp;</p>
+    <hr />
+
+    <h2>Exercise 3: Book Order</h2>
+    <p data-line="27">In many cases, developers have to maintain and develop code written by others. Look at the
+        HTML code and JavaScript code below. Study how it works and what logic it follows.</p>
+    <p data-line="29">Then add the following features to the code:</p>
+    <p data-line="31">a) The values read from the text boxes are stored as strings. Modify the code to store the
+        quantity as an integer, and the price, tax, and discount as floats.</p>
+    <p data-line="33">b) Modify the JavaScript code to double the discount applied when the quantity ordered is greater
+        than 100 items.</p>
+    <p data-line="35">c) Modify the HTML form to include a shipping field, and include this value in the total calculation
+        in shopping.js.</p>
+    <p>&nbsp;</p>
+    <fieldset>
+        <p>Calculate a bulk book order.</p>
+        <div>
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+        </div>
+        <div>
+            <label for="price">Price Per Unit</label>
+            <input type="text" name="price" id="price" value="1.00" required>
+        </div>
+        <div>
+            <label for="tax">VAT (%)</label>
+            <input type="text" name="tax" id="tax" value="0.0" required>
+        </div>
+        <div>
+            <label for="discount">Discount</label>
+            <input type="text" name="discount" id="discount" value="0.00" required>
+        </div>
+        <div>
+            <label for="shipping">Shipping</label>
+            <input type="text" name="shipping" id="shipping" value="0.00" required>
+        </div>
+        <div>
+            <label for="total">Total</label>
+            <input type="text" name="total" id="total" value="0.00">
+        </div>
+        <div>
+            <input type="submit" value="Calculate" id="submit-calculate" onClick="calculateOrder()">
+        </div>
+    </fieldset>
+
+    <hr />
+
+    <h2>Exercise 4: Hidden Extra Fields</h2>
+    <ul>
+        <li>In the PowerPoint slides, you were shown a demo of a form where extra fields were hidden and turned visible
+            after certain events occurred.
+            <p data-line="41">Copy the contact form created in Exercise 1 and edit it. Add select boxes to the form where
+                the user can choose a preferred way of contact. There should be at least email, phone, and SMS available. </p>
+            <p data-line="41">After choosing the box, the user is shown an input field that asks for detailed information
+                regarding the selected contact method.</p>
+        </li>
+    </ul>
+
+</body>
+
+</html>

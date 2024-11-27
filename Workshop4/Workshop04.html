@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Workshop 4</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="4koodi.js" defer></script>
+</head>
+<body class="ws4">
+  <h1 id="main-heading">Workshop 4: DOM Scripting</h1>
+  <hr />
+  <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use.</p>
+  
+  <hr />
+  <h2>Exercise 1: Basic DOM Manipulation</h2>
+  <p>Below you will see three buttons. Edit the source code and add onClick-events to these buttons.</p>
+  <p>
+    <button onclick="changeHeading()">Button 1</button>
+    <button onclick="secondButton()">Button 2</button>
+    <button onclick="thirdButton()">Button 3</button>
+  </p>
+  <p id="target-paragraph"></p>
+  
+  <hr />
+  <h2 id="exercise2-heading">Exercise 2: DOM Traversing using IDs and Classes</h2>
+  <p class="surprise">Add onchange events to the following checkboxes.</p>
+  <p>
+    <label>
+      <input onchange="hide()" type="checkbox" id="CheckboxGroup1_0"> Hide me
+    </label>
+    <br>
+    <label>
+      <input onchange="show()" type="checkbox" id="CheckboxGroup1_1"> Show me
+    </label>
+    <br>
+    <label>
+      <input onchange="styleSurprise()" type="checkbox" id="CheckboxGroup1_2"> Surprise
+			<span id="surpise">Surprise</span>
+		</label>
+  </p>
+  <p id="me" class="red-box">Hoi Maailma!</p>
+
+    <div id="me" class="red-box" style="background-color: red; color: white; padding: 10px; border-radius: 5px;">
+      Hoi Maailma!
+    </div>
+
+  <hr />
+  <h2>Exercise 3: Images and Pulldowns</h2>
+  <p>Select a new car from the list:</p>
+  <select id="mySelect" onchange="showChoice()">
+    <option value="BMW">BMW</option>
+    <option value="Audi">Audi</option>
+    <option value="Mercedes">Mercedes</option>
+    <option value="Volvo">Volvo</option>
+  </select>
+  <br><br>
+  <img id="carimage" src="bmwkuva.jpg" 
+       width="400" alt="" onmouseover="addBorder()" onmouseout="removeBorder()">
+
+  <hr />
+  <h2>Exercise 4: Moving Things Around</h2>
+  <button onclick="changePosition()">Move!</button>
+  <button onclick="setInterval(doMove, 100)">Animate</button>
+  <button onclick="setInterval(fadeOut, 250)">Fade Out!</button>
+  <button onclick="remove()">Disappear!</button>
+
+  <hr />
+  <h2>Exercise 5: Tables</h2>
+  <ul>
+		<li class="surprise">Write a JavaScript function to add rows to a table. Rows can contain preset values.</li>
+		<li>When your code is working, try reading the content to be added from a set of fields below the table.</li>
+	</ul>
+	<br>
+	<table id="data" class="display">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Salary</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Tiger Nixon</td>
+				<td>System Architect</td>
+				<td>$320,800</td>
+			</tr>
+			<tr>
+				<td>Garrett Winters</td>
+				<td>Accountant</td>
+				<td>$170,750</td>
+			</tr>
+			<tr>
+				<td>Ashton Cox</td>
+				<td>Junior Technical Author</td>
+				<td>$86,000</td>
+			</tr>
+			<tr>
+				<td>Cedric Kelly</td>
+				<td>Senior Javascript Developer</td>
+				<td>$433,060</td>
+			</tr>
+			<tr>
+				<td>Airi Satou</td>
+				<td>Accountant</td>
+				<td>$162,700</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		Name: <input type="text" id="textfield"><br>
+		Position: <input type="text" id="textfield2"><br>
+		Salary: <input type="text" id="textfield3"><br>
+		<input type="button" onclick="insertRows()" value="Insert">
+	</p>
+	<hr/>
+  <h2>Bonus Exercises</h2>
+  <ul>
+    <li>Write a loop to replace all LI tags with a `<strong>` saying "Replaced".</li>
+    <li>Replace content only in those containing the word "Select".</li>
+  </ul>
+</body>
+</html>
